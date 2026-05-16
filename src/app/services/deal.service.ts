@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { Deal, NewDeal } from '../models/deal.model';
+import { Deal, DealFilter, NewDeal } from '../models/deal.model';
 import {
   PaginatedResponse,
   PaginationRequestData,
@@ -18,24 +18,27 @@ export class DealService {
 
   getAll(
     pagination?: PaginationRequestData,
+    filter?: DealFilter,
   ): Observable<PaginatedResponse<Deal>> {
     const { pageIndex, pageSize } = pagination ?? DEFAULT_PAGINATION;
     const pageNumber = pageIndex + 1;
 
     let filtered = this.deals;
 
-    // if (name?.trim()) {
-    //   const term = name.trim().toLowerCase();
-    //   filtered = filtered.filter((d) => d.name.toLowerCase().includes(term));
-    // }
+    const name = filter?.name?.trim();
+    if (name) {
+      const term = name.toLowerCase();
+      filtered = filtered.filter((d) => d.name.toLowerCase().includes(term));
+    }
 
-    // if (purchasePrice != null) {
-    //   filtered = filtered.filter((d) =>
-    //     purchasePriceComparison === 'lt'
-    //       ? d.purchasePrice < purchasePrice
-    //       : d.purchasePrice > purchasePrice,
-    //   );
-    // }
+    const purchasePrice = filter?.purchasePrice;
+    if (purchasePrice != null) {
+      filtered = filtered.filter((d) =>
+        filter?.operator === 'lt'
+          ? d.purchasePrice < purchasePrice
+          : d.purchasePrice > purchasePrice,
+      );
+    }
 
     const total = filtered.length;
     const start = (pageNumber - 1) * pageSize;

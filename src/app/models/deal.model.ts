@@ -9,6 +9,10 @@ export interface Deal {
 
 export type NewDeal = Omit<Deal, 'id' | 'capRate'>;
 
-export type DealUpdate = Partial<NewDeal>;
-
 export type PurchasePriceComparison = 'gt' | 'lt';
+
+export interface DealFilter {
+  name?: string | null;
+  purchasePrice?: number | null;
+  operator?: PurchasePriceComparison;
+}

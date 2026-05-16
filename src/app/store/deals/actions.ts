@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Deal, NewDeal } from '../../models/deal.model';
+import { Deal, DealFilter, NewDeal } from '../../models/deal.model';
 import {
   PaginatedResponse,
   PaginationRequestData,
@@ -10,6 +10,10 @@ const prefix = '[Deals]';
 export const loadDeals = createAction(
   `${prefix} Load Deals`,
   props<{ pagination?: PaginationRequestData }>(),
+);
+export const filterDeals = createAction(
+  `${prefix} Filter Deals`,
+  props<{ filter?: DealFilter }>(),
 );
 export const loadDealsSuccess = createAction(
   `${prefix} Load Deals Success`,

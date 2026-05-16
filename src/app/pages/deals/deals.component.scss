@@ -7,17 +7,31 @@
   background-color: v.$intapp-surface;
   padding: 32px;
 
-  h1 {
-    margin-top: 0;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+
+    h1 {
+      margin: 0;
+    }
   }
-}
 
-#buttons {
-  display: flex;
-  justify-content: end;
-  margin-bottom: 8px;
-}
+  #filter {
+    max-width: 600px;
+    margin-bottom: 8px;
 
-mat-spinner {
-  margin: 16px auto;
+    form {
+      display: flex;
+      gap: 8px;
+    }
+
+    button {
+      height: stretch;
+    }
+  }
+
+  mat-spinner {
+    margin: 16px auto;
+  }
 }

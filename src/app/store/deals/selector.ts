@@ -7,16 +7,13 @@ const featSelector = createFeatureSelector<DealsState>('deals');
 export const selectDeals = createSelector(featSelector, (s) => s.deals);
 
 export const selectTotal = createSelector(featSelector, (s) => s.total);
-export const selectPageSize = createSelector(featSelector, (s) => s.pageSize);
-export const selectPageIndex = createSelector(
-  featSelector,
-  (s) => s.pageIndex,
-);
 
 export const selectPaginationData = createSelector(featSelector, (s) => ({
   pageSize: s.pageSize,
   pageIndex: s.pageIndex,
 }));
+
+export const selectFilter = createSelector(featSelector, (s) => s.filter);
 
 export const selectIsLoadingDeals = createSelector(
   featSelector,

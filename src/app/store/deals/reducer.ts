@@ -1,10 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { Deal } from '../../models/deal.model';
+import { Deal, DealFilter } from '../../models/deal.model';
 import { RequestStatus } from '../../data/common';
 import {
   createDeal,
   createDealError,
   createDealSuccess,
+  filterDeals,
   loadDeals,
   loadDealsError,
   loadDealsSuccess,
@@ -17,6 +18,7 @@ import {
 export interface DealsState {
   deals: Deal[];
   total: number;
+  filter?: DealFilter;
   pageIndex: number;
   pageSize: number;
   loadStatus: RequestStatus;
@@ -37,10 +39,23 @@ const initialState: DealsState = {
 export const dealsReducer = createReducer(
   initialState,
   on(loadDeals, (state, action) => {
+    const pageSize = action.pagination?.pageSize ?? DEFAULT_PAGE_SIZE;
+    const pageSizeChanged = pageSize !== state.pageSize;
     return {
       ...state,
-      pageSize: action.pagination?.pageSize ?? DEFAULT_PAGE_SIZE,
-      pageIndex: action.pagination?.pageIndex ?? DEFAULT_PAGE_INDEX,
+      pageSize,
+      pageIndex: pageSizeChanged
+        ? DEFAULT_PAGE_INDEX
+        : (action.pagination?.pageIndex ?? DEFAULT_PAGE_INDEX),
+      loadStatus: RequestStatus.Loading,
+      loadErrorMsg: undefined,
+    };
+  }),
+  on(filterDeals, (state, action) => {
+    return {
+      ...state,
+      filter: action.filter,
+      pageIndex: DEFAULT_PAGE_INDEX,
       loadStatus: RequestStatus.Loading,
       loadErrorMsg: undefined,
     };

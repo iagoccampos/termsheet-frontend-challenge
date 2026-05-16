@@ -1,10 +1,32 @@
 <div id="container">
-  <h1>Deals</h1>
-
-  <div id="buttons">
+  <div class="header">
+    <h1>Deals</h1>
     <button mat-raised-button color="primary" (click)="addDeal()">
       <mat-icon aria-label="Add deal" fontIcon="add"></mat-icon>Add
     </button>
+  </div>
+
+  <div id="filter">
+    <form [formGroup]="filterForm">
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Purchase Price</mat-label>
+        <input matInput type="number" formControlName="purchasePrice" />
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Condition</mat-label>
+        <mat-select formControlName="operator">
+          <mat-option value="gt">Greater than</mat-option>
+          <mat-option value="lt">Less than</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="accent" type="button" (click)="clear()">
+        Clear
+      </button>
+    </form>
   </div>
 
   @if (!loading()) {
