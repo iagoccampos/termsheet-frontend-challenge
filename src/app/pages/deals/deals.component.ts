@@ -23,6 +23,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { PurchasePriceComparison } from '../../models/deal.model';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+
 @Component({
   selector: 'app-deals',
   standalone: true,
@@ -39,6 +41,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
+    CurrencyMaskModule,
   ],
   templateUrl: './deals.component.html',
   styleUrl: './deals.component.scss',

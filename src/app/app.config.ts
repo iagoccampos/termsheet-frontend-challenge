@@ -12,6 +12,7 @@ import { DealsEffect } from './store/deals/effects';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { CURRENCY_MASK_CONFIG, CurrencyMaskConfig } from 'ng2-currency-mask';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,18 @@ export const appConfig: ApplicationConfig = {
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: { maxWidth: 512, autoFocus: 'first-tabbable' },
+    },
+    {
+      provide: CURRENCY_MASK_CONFIG,
+      useValue: {
+        align: 'left',
+        allowNegative: false,
+        decimal: '.',
+        precision: 2,
+        prefix: '$ ',
+        suffix: '',
+        thousands: ',',
+      },
     },
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
   ],

@@ -27,6 +27,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { map } from 'rxjs';
 import { DecimalPipe } from '@angular/common';
 import { DealService } from '../../../services/deal.service';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 @Component({
   selector: 'app-create-deal-dialog',
@@ -40,6 +41,7 @@ import { DealService } from '../../../services/deal.service';
     MatProgressSpinnerModule,
     MatDividerModule,
     DecimalPipe,
+    CurrencyMaskModule,
   ],
   templateUrl: './create-deal-dialog.component.html',
   styleUrl: './create-deal-dialog.component.scss',
