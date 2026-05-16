@@ -3,7 +3,16 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { authReducer } from './store/auth/reducer';
+import { AuthEffect } from './store/auth/effects';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimationsAsync()]
+  providers: [
+    provideRouter(routes),
+    provideAnimationsAsync(),
+    provideStore({ auth: authReducer }),
+    provideEffects(AuthEffect),
+  ],
 };
