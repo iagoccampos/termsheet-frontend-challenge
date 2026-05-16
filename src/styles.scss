@@ -136,3 +136,20 @@ body {
 mat-form-field {
   width: 100%;
 }
+
+mat-dialog-content {
+  padding-top: 20px !important;
+  padding-bottom: 0 !important;
+}
+
+mat-dialog-actions {
+  padding: 16px !important;
+}
+
+.mat-mdc-table {
+  border: 1px solid v.$intapp-border !important;
+
+  .mat-mdc-header-row {
+    background-color: v.$intapp-slate;
+  }
+}

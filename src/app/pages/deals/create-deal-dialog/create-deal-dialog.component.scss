@@ -1,0 +1,20 @@
+@use "../../../../styles/variables" as v;
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 360px;
+}
+
+#errMsg {
+  margin-top: 0;
+  color: v.$intapp-red;
+}
+
+mat-dialog-actions {
+  gap: 16px;
+}
+
+.cap-outside-range {
+  color: v.$intapp-red;
+}

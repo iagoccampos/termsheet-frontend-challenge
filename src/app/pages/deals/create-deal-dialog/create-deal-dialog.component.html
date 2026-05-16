@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>New Deal</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Purchase Price</mat-label>
+      <input matInput type="number" formControlName="purchasePrice" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>NOI</mat-label>
+      <input matInput type="number" formControlName="noi" />
+    </mat-form-field>
+  </form>
+
+  <p
+    [class.cap-outside-range]="
+      (capRate() > 12 || capRate() < 5) && capRate() !== 0
+    "
+  >
+    Cap Rate: {{ capRate() | number: "1.2-2" }}%
+  </p>
+
+  <p id="errMsg">{{ errMsg() }}&nbsp;</p>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+  @if (loading()) {
+    <mat-spinner diameter="32"></mat-spinner>
+  }
+  <button mat-button type="button" (click)="cancel()" [disabled]="loading()">
+    Cancel
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!form.valid || loading()"
+    (click)="submit()"
+  >
+    Create
+  </button>
+</mat-dialog-actions>
