@@ -4,7 +4,7 @@ import { delay } from 'rxjs/operators';
 import { Deal, DealFilter, DealInput, DealUpdate } from '../models/deal.model';
 import { PaginatedResponse } from '../models/common.model';
 import { MOCK_DEALS } from '../data/mock-deals';
-import { SIMULATED_LATENCY_MS } from '../data/common';
+import { SIMULATED_LATENCY_MS } from '../shared/const/consts';
 
 const DEFAULT_PAGE = 1;
 const DEFAULT_PAGE_SIZE = 10;
@@ -49,10 +49,12 @@ export class DealService {
     const deal = this.deals.find((d) => d.id === id);
 
     if (!deal) {
-      return throwError(() => new Error(`Deal ${id} not found`)).pipe(delay(SIMULATED_LATENCY_MS))
+      return throwError(() => new Error(`Deal ${id} not found`)).pipe(
+        delay(SIMULATED_LATENCY_MS),
+      );
     }
 
-    return of({ ...deal }).pipe(delay(SIMULATED_LATENCY_MS))
+    return of({ ...deal }).pipe(delay(SIMULATED_LATENCY_MS));
   }
 
   create(input: DealInput): Observable<Deal> {
@@ -70,7 +72,9 @@ export class DealService {
   update(id: string, changes: DealUpdate): Observable<Deal> {
     const index = this.deals.findIndex((d) => d.id === id);
     if (index === -1) {
-      return throwError(() => new Error(`Deal ${id} not found`)).pipe(delay(SIMULATED_LATENCY_MS));
+      return throwError(() => new Error(`Deal ${id} not found`)).pipe(
+        delay(SIMULATED_LATENCY_MS),
+      );
     }
 
     const deal = { ...this.deals[index], ...changes };
@@ -83,7 +87,9 @@ export class DealService {
   delete(id: string): Observable<string> {
     const exists = this.deals.some((d) => d.id === id);
     if (!exists) {
-      return throwError(() => new Error(`Deal ${id} not found`)).pipe(delay(SIMULATED_LATENCY_MS));
+      return throwError(() => new Error(`Deal ${id} not found`)).pipe(
+        delay(SIMULATED_LATENCY_MS),
+      );
     }
 
     this.deals = this.deals.filter((d) => d.id !== id);

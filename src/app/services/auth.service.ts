@@ -1,17 +1,15 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { delay, Observable, of, tap, throwError } from 'rxjs';
 import { MOCK_USERS } from '../data/mock-users';
-import { IUser } from '../models/user.model';
-import { SIMULATED_LATENCY_MS } from '../data/common';
+import { User } from '../models/user.model';
+import { SIMULATED_LATENCY_MS } from '../shared/const/consts';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly currentUser = signal<IUser | null>(null);
+  private readonly currentUser = signal<User | null>(null);
   readonly isAuthenticated = computed(() => this.currentUser() !== null);
 
-  login(username: string, password: string): Observable<IUser> {
+  login(username: string, password: string): Observable<User> {
     const match = MOCK_USERS.find(
       (user) => user.username === username && user.password === password,
     );
