@@ -4,8 +4,8 @@ import { delay } from 'rxjs/operators';
 import { Deal, DealFilter, DealInput, DealUpdate } from '../models/deal.model';
 import { PaginatedResponse } from '../models/common.model';
 import { MOCK_DEALS } from '../data/mock-deals';
+import { SIMULATED_LATENCY_MS } from '../data/common';
 
-const SIMULATED_LATENCY_MS = 400;
 const DEFAULT_PAGE = 1;
 const DEFAULT_PAGE_SIZE = 10;
 
