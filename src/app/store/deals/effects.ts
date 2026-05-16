@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { DealService } from '../../services/deal.service';
 import {
@@ -13,6 +13,7 @@ import {
 } from './actions';
 import { Store } from '@ngrx/store';
 import { selectFilter, selectPaginationData } from './selector';
+import { concatLatestFrom } from '@ngrx/operators';
 
 @Injectable()
 export class DealsEffect {
