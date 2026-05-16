@@ -1,1 +1,1 @@
-export const SIMULATED_LATENCY_MS = 500;
+export const SIMULATED_LATENCY_MS = 1000;

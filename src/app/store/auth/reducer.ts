@@ -20,6 +20,7 @@ export const authReducer = createReducer(
     return {
       ...state,
       requestStatus: RequestStatus.Loading,
+      errorMsg: undefined,
     };
   }),
   on(loginSuccess, (state, action) => {

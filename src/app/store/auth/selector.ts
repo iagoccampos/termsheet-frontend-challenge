@@ -13,3 +13,4 @@ export const selectIsLoading = createSelector(
   featSelector,
   (s) => s.requestStatus === RequestStatus.Loading,
 );
+export const selectErrorMsg = createSelector(featSelector, (s) => s.errorMsg);

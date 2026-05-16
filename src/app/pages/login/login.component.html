@@ -1,0 +1,44 @@
+<img
+  id="logo"
+  ngSrc="/assets/images/logo.svg"
+  width="176"
+  height="48"
+  priority
+/>
+
+<div id="panel">
+  <h1>Sign in</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input
+        autofocus
+        matInput
+        placeholder="Placeholder"
+        formControlName="username"
+        autocomplete="username"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        placeholder="Placeholder"
+        formControlName="password"
+        autocomplete="current-password"
+        type="password"
+      />
+    </mat-form-field>
+
+    <p id="errMsg">{{ errMsg() }}&nbsp;</p>
+
+    <div id="footer">
+      <button mat-raised-button color="primary" [disabled]="loading()">
+        Log in
+      </button>
+      @if (loading()) {
+        <mat-spinner diameter="32"></mat-spinner>
+      }
+    </div>
+  </form>
+</div>

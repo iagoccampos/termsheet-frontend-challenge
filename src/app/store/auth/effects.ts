@@ -13,6 +13,7 @@ export class AuthEffect {
       switchMap((action) => {
         return this.authService.login(action.username, action.password).pipe(
           map((res) => {
+            this.router.navigate(['deals']);
             return loginSuccess({ user: res });
           }),
           catchError((err: Error) => {

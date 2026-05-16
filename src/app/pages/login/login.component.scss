@@ -1,0 +1,33 @@
+@use "../../../styles/variables" as v;
+
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: v.$intapp-navy;
+}
+
+#logo {
+  margin: 32px 0;
+}
+
+#panel {
+  padding: 16px;
+  margin: 10px;
+  border: 1px solid v.$intapp-border;
+  border-radius: 8px;
+  max-width: 500px;
+  height: fit-content;
+  background-color: v.$intapp-surface;
+}
+
+#errMsg {
+  margin-top: 0;
+  color: v.$intapp-red;
+}
+
+#footer {
+  display: flex;
+  gap: 16px;
+}
