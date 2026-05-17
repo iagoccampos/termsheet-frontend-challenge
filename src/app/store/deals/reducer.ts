@@ -27,7 +27,7 @@ export interface DealsState {
   createErrorMsg?: string;
 }
 
-const initialState: DealsState = {
+export const initialState: DealsState = {
   deals: [],
   total: 0,
   pageIndex: DEFAULT_PAGE_INDEX,

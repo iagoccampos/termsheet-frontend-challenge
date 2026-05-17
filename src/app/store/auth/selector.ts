@@ -4,7 +4,6 @@ import { RequestStatus } from '../../data/common';
 
 const featSelector = createFeatureSelector<AuthState>('auth');
 
-export const selectUser = createSelector(featSelector, (s) => s.currentUser);
 export const selectIsAuth = createSelector(
   featSelector,
   (s) => !!s.currentUser,

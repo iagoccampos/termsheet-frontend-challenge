@@ -19,10 +19,6 @@ export const selectIsLoadingDeals = createSelector(
   featSelector,
   (s) => s.loadStatus === RequestStatus.Loading,
 );
-export const selectLoadErrorMsg = createSelector(
-  featSelector,
-  (s) => s.loadErrorMsg,
-);
 
 export const selectIsCreatingDeal = createSelector(
   featSelector,

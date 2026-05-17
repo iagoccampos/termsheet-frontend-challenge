@@ -9,7 +9,7 @@ export interface AuthState {
   errorMsg?: string;
 }
 
-const initialState: AuthState = {
+export const initialState: AuthState = {
   requestStatus: RequestStatus.Pending,
   currentUser: null,
 };
